@@ -50,13 +50,17 @@ class RecipeDetailsPage extends StatelessWidget {
                         Row(
                           children: [
                             Icon(Icons.timer),
+
                             Text(
-                              ' ' + recipe.cookTimeMinutes.toString() + ' min',
+                              recipe.cookTimeMinutes != 0
+                                  ? recipe.cookTimeMinutes.toString()
+                                  : recipe.prepTimeMinutes.toString(),
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 color: Colors.black87,
                               ),
                             ),
+                            Text(' min'),
                           ],
                         ),
                       ],

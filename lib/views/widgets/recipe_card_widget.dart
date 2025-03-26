@@ -95,7 +95,9 @@ class _RecipeCardWidgetState extends State<RecipeCardWidget> {
                             ),
                             Icon(Icons.timer, color: Colors.amber),
                             Text(
-                              recipes.cookTimeMinutes.toString(),
+                              recipes.cookTimeMinutes != 0
+                                  ? recipes.cookTimeMinutes.toString()
+                                  : recipes.prepTimeMinutes.toString(),
                               style: TextStyle(color: Colors.white),
                             ),
                             Text(
