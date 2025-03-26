@@ -8,25 +8,104 @@ class RecipeDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              Image.network(recipe.image),
-              Padding(
-                padding: const EdgeInsets.only(top: 20, left: 10),
-                child: Positioned(
-                  child: GestureDetector(
-                    child: Icon(Icons.arrow_back, color: Colors.amber),
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Image.network(recipe.image),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, left: 10),
+                  child: Positioned(
+                    child: GestureDetector(
+                      child: Icon(Icons.arrow_back, color: Colors.amber),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
                   ),
                 ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          recipe.name,
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.timer),
+                            Text(
+                              ' ' + recipe.cookTimeMinutes.toString() + ' min',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Text(recipe.mealType[0]),
+                    SizedBox(height: 20),
+                    Text(
+                      'Ingredients',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: List.generate(recipe.ingredients.length, (
+                          index,
+                        ) {
+                          return Text(' - ' + recipe.ingredients[index]);
+                        }),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Instructions',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: List.generate(recipe.instructions.length, (
+                          index,
+                        ) {
+                          return Text(' - ' + recipe.instructions[index]);
+                        }),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -12,10 +12,13 @@ class RecipeCardWidget extends StatefulWidget {
 
 class _RecipeCardWidgetState extends State<RecipeCardWidget> {
   List<Recipe> recipeModel = [];
+  bool isLoading = false;
   myRecipes() {
+    isLoading = true;
     recipeItems().then((value) {
       setState(() {
         recipeModel = value;
+        isLoading = false;
       });
     });
   }
@@ -28,77 +31,86 @@ class _RecipeCardWidgetState extends State<RecipeCardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: recipeModel.length,
-      itemBuilder: (context, index) {
-        final recipes = recipeModel[index];
-        return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => RecipeDetailsPage(recipe: recipes),
-                ),
-              );
-            },
-            child: Stack(
-              children: [
-                Container(
-                  height: 250,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    image: DecorationImage(
-                      image: NetworkImage(recipes.image),
-                      fit: BoxFit.fill,
+    return isLoading
+        ? Center(child: CircularProgressIndicator())
+        : ListView.builder(
+          shrinkWrap: true,
+          itemCount: recipeModel.length,
+          itemBuilder: (context, index) {
+            final recipes = recipeModel[index];
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RecipeDetailsPage(recipe: recipes),
                     ),
-                    boxShadow: [
-                      BoxShadow(color: Colors.black26, offset: Offset(-5, 10)),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  right: 0,
-                  left: 0,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.black38,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
+                  );
+                },
+                child: Stack(
+                  children: [
+                    Container(
+                      height: 250,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        image: DecorationImage(
+                          image: NetworkImage(recipes.image),
+                          fit: BoxFit.fill,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            offset: Offset(-5, 10),
+                            blurRadius: 2,
+                          ),
+                        ],
                       ),
                     ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            recipes.name,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      left: 0,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.black38,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20),
                           ),
                         ),
-                        Icon(Icons.timer, color: Colors.amber),
-                        Text(
-                          recipes.cookTimeMinutes.toString(),
-                          style: TextStyle(color: Colors.white),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                recipes.name,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Icon(Icons.timer, color: Colors.amber),
+                            Text(
+                              recipes.cookTimeMinutes.toString(),
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            Text(
+                              " mins",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
                         ),
-                        Text(" mins", style: TextStyle(color: Colors.white)),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         );
-      },
-    );
   }
 }
