@@ -13,14 +13,13 @@ class RecipeCardWidget extends StatefulWidget {
 class _RecipeCardWidgetState extends State<RecipeCardWidget> {
   List<Recipe> recipeModel = [];
   bool isLoading = false;
-  myRecipes() {
+
+  void myRecipes() async {
     isLoading = true;
-    recipeItems().then((value) {
-      setState(() {
-        recipeModel = value;
-        isLoading = false;
-      });
-    });
+    final recipes = await recipeItems();
+    recipeModel = recipes;
+    isLoading = false;
+    setState(() {});
   }
 
   @override
