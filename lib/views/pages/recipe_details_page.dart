@@ -8,6 +8,7 @@ class RecipeDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[50],
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -19,7 +20,7 @@ class RecipeDetailsPage extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 20, left: 10),
                   child: Positioned(
                     child: GestureDetector(
-                      child: Icon(Icons.arrow_back, color: Colors.amber),
+                      child: Icon(Icons.arrow_back, color: Colors.red[300]),
                       onTap: () {
                         Navigator.pop(context);
                       },
@@ -49,7 +50,7 @@ class RecipeDetailsPage extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Icon(Icons.timer),
+                            Icon(Icons.timer, color: Colors.red[300]),
 
                             Text(
                               recipe.cookTimeMinutes != 0

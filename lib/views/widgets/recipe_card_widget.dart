@@ -76,7 +76,7 @@ class _RecipeCardWidgetState extends State<RecipeCardWidget> {
                         padding: EdgeInsets.symmetric(horizontal: 8.0),
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Colors.black38,
+                          color: Colors.white30,
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(20),
                             bottomRight: Radius.circular(20),
@@ -87,23 +87,16 @@ class _RecipeCardWidgetState extends State<RecipeCardWidget> {
                             Expanded(
                               child: Text(
                                 recipes.name,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Icon(Icons.timer, color: Colors.amber),
+                            Icon(Icons.timer, color: Colors.red[300]),
                             Text(
                               recipes.cookTimeMinutes != 0
                                   ? recipes.cookTimeMinutes.toString()
                                   : recipes.prepTimeMinutes.toString(),
-                              style: TextStyle(color: Colors.white),
                             ),
-                            Text(
-                              " mins",
-                              style: TextStyle(color: Colors.white),
-                            ),
+                            Text(" mins"),
                           ],
                         ),
                       ),
