@@ -1,16 +1,15 @@
 # food_recipe
 
-A new Flutter project.
+Learning how to use an API in flutter.
 
-## Getting Started
+API used in  this project: [dummyjson/recipe](https://dummyjson.com/recipes)
 
-This project is a starting point for a Flutter application.
+## SCREENSHOTS
 
-A few resources to get you started if this is your first Flutter project:
+<img src="https://github.com/user-attachments/assets/56cf53d4-56eb-456c-8d27-03aa23d0d67a" width="200">
+<img src="https://github.com/user-attachments/assets/7f6c1942-cef9-47e0-8971-4f125975b5fd" width="200">
+<img src="https://github.com/user-attachments/assets/027e157f-e472-4def-bf87-cad937bdf368" width="200">
+<img src="https://github.com/user-attachments/assets/7985a4da-4596-4d05-a326-c9877e469d2c" width="200">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
