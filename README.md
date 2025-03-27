@@ -1,6 +1,7 @@
 # food_recipe
 
 Learning how to use an API in flutter.
+
 API used in  this project: [dummyjson/recipe](https://dummyjson.com/recipes)
 
 ## SCREENSHOTS
